@@ -8,20 +8,21 @@
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
+    "iron-component-page": "^3.0.1"
   },
   "resolutions": {
     "polymer": "^2.0.0"
   },
   "homepage": "https://github.com/DoubleTrade/custom-scrollbar",
-  "_release": "62dd2aeb10",
+  "_release": "709a8a55ad",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "62dd2aeb100b6dd74a38178c57cb7fb6324b0e7e"
+    "commit": "709a8a55ade42593270eabb22b21d308c8717b9c"
   },
   "_source": "https://github.com/DoubleTrade/custom-scrollbar.git",
   "_target": "master",
-  "_originalSource": "DoubleTrade/custom-scrollbar",
+  "_originalSource": "custom-scrollbar",
   "_direct": true
 }
