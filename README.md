@@ -31,7 +31,7 @@ Custom property | Description | Default
     <link rel="import" href="custom-scrollbar">
     <style is="custom-style">
       div {
-        height: 320px;
+        height: 200px;
         width: 100%;
       }
     </style>
