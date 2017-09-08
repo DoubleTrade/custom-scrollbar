@@ -28,7 +28,7 @@ Custom property | Description | Default
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="custom-scrollbar">
+    <link rel="import" href="custom-scrollbar.html">
     <style is="custom-style">
       div {
         height: 200px;
