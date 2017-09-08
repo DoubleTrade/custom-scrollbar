@@ -12,6 +12,17 @@
 [See live demo](https://doubletrade.github.io/custom-scrollbar/components/custom-scrollbar/demo/)
 [See docs](https://doubletrade.github.io/custom-scrollbar/)
 
+
+### Styling
+
+`<custom-scrollbar>` provides the following custom properties and mixins for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--custom-scrollbar-height` | Height of the content | 200px
+`--custom-scrollbar-bar` | Customize the bar | `{}`
+`--custom-scrollbar-track` | Customize the track | `{}`
+
 <!---
 ```
 <custom-element-demo>
