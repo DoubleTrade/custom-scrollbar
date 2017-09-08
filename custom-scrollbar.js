@@ -1,6 +1,7 @@
+/* eslint no-mixed-operators: "off", no-param-reassign: "off", radix: "off" */
 /**
  * `custom-scrollbar`
- * 
+ *
  *
  * @customElement
  * @polymer
