@@ -24,6 +24,7 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
         value: 0,
       },
       _dragging: Object,
+      _scrollbarBar: Element,
     };
   }
 
@@ -39,71 +40,61 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
   ready() {
     super.ready();
 
-    this.scrollTarget = this.shadowRoot.querySelector('.scrollbar-hidden');
+    Polymer.Async.microTask.run(() => {
+      this.scrollTarget = this.shadowRoot.querySelector('.scrollbar-hidden');
 
-    this._heightContent = this.shadowRoot.querySelector('.scrollbar').offsetHeight;
-    const scrollbarChild = this.shadowRoot.querySelector('.scrollbar-child');
-    const visibleAreaPercent = this._heightContent * 100 / scrollbarChild.offsetHeight;
-    const scrollbarHeight = this._heightContent * visibleAreaPercent / 100;
-    this._scrollbarHeight = scrollbarHeight > 20 ? scrollbarHeight : 20;
-    this.shadowRoot.querySelector('.scrollbar-bar').style.height = `${this._scrollbarHeight}px`;
-
-    const scrollbarBar = this.shadowRoot.querySelector('.scrollbar-bar');
-
-    this._draggable(scrollbarBar);
+      this._heightContent = this.shadowRoot.querySelector('.scrollbar').offsetHeight;
+      const scrollbarChild = this.shadowRoot.querySelector('.scrollbar-child');
+      const visibleAreaPercent = this._heightContent * 100 / scrollbarChild.offsetHeight;
+      const scrollbarHeight = this._heightContent * visibleAreaPercent / 100;
+      this._scrollbarHeight = scrollbarHeight > 20 ? scrollbarHeight : 20;
+      this._scrollbarBar = this.shadowRoot.querySelector('.scrollbar-bar');
+      this._scrollbarBar.style.height = `${this._scrollbarHeight}px`;
+      this._draggable();
+    });
   }
 
-  _draggable(element) {
+  _draggable() {
     this._dragging = null;
 
-    element.addEventListener('mousedown', (event) => {
+    this._scrollbarBar.addEventListener('mousedown', (event) => {
+      event.preventDefault();
       this._dragging = {
         mouseY: event.clientY,
         startY: parseInt(!this._scrollbarTop ? 0 : this._scrollbarTop),
       };
-      if (element.setCapture) element.setCapture();
+
+      document.addEventListener('mouseup', this.endOfDrag.bind(this));
+      document.addEventListener('mousemove', this.drag.bind(this));
     });
+  }
 
-    element.addEventListener('losecapture', () => {
-      this._dragging = null;
-    });
+  endOfDrag() {
+    this._dragging = null;
+    document.removeEventListener('mouseup', this.endOfDrag);
+    document.removeEventListener('mousemove', this.drag);
+  }
 
-    document.addEventListener(
-      'mouseup',
-      () => {
-        this._dragging = null;
-      },
-      true
-    );
+  drag(event) {
+    event.preventDefault();
+    if (!this._dragging) {
+      return;
+    }
 
-    const dragTarget = element.setCapture ? element : document;
+    const scrollbarChild = this.shadowRoot.querySelector('.scrollbar-child');
 
-    dragTarget.addEventListener(
-      'mousemove',
-      (event) => {
-        if (this._dragging) {
-          event.preventDefault();
-        } else {
-          return;
-        }
+    this._scrollbarTop = this._dragging.startY + (event.clientY - this._dragging.mouseY);
 
-        const scrollbarChild = this.shadowRoot.querySelector('.scrollbar-child');
+    const scrollTop =
+      this._scrollbarTop /
+      (this._heightContent - this._scrollbarHeight) *
+      (this.scrollTarget.scrollHeight - this.scrollTarget.clientHeight);
 
-        this._scrollbarTop = this._dragging.startY + (event.clientY - this._dragging.mouseY);
-
-        const scrollTop =
-          this._scrollbarTop /
-          (this._heightContent - this._scrollbarHeight) *
-          (this.scrollTarget.scrollHeight - this.scrollTarget.clientHeight);
-
-        if (scrollTop + this._heightContent >= scrollbarChild.offsetHeight) {
-          return;
-        }
-        element.style.transform = `translateY(${Math.max(0, this._scrollbarTop)}px)`;
-        this.scrollTarget.scrollTop = scrollTop;
-      },
-      true
-    );
+    if (scrollTop + this._heightContent >= scrollbarChild.offsetHeight) {
+      return;
+    }
+    this._scrollbarBar.style.transform = `translateY(${Math.max(0, this._scrollbarTop)}px)`;
+    this.scrollTarget.scrollTop = scrollTop;
   }
 }
 
