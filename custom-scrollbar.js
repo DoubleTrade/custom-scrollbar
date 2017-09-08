@@ -49,10 +49,10 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
 
     const scrollbarBar = this.shadowRoot.querySelector('.scrollbar-bar');
 
-    this.draggable(scrollbarBar);
+    this._draggable(scrollbarBar);
   }
 
-  draggable(element) {
+  _draggable(element) {
     this._dragging = null;
 
     element.addEventListener('mousedown', (event) => {
