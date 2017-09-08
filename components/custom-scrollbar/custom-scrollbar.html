@@ -1,0 +1,80 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-scroll-target-behavior/iron-scroll-target-behavior.html">
+
+<dom-module id="custom-scrollbar">
+  <template>
+    <style>
+       :host {
+        display: block;
+        overflow: hidden;
+        overflow-y: auto;
+      }
+
+      .scrollbar {
+        position: relative;
+        height: var(--custom-scrollbar-height, 200px);
+      }
+
+      .scrollbar-hidden {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        outline: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: -20px;
+        bottom: 0;
+      }
+
+      .scrollbar-track {
+        position: absolute;
+        right: 2px;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        overflow: hidden;
+        @apply --custom-scrollbar-track;
+      }
+
+      .scrollbar-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 4px;
+        cursor: default;
+        outline: none;
+        z-index: 1;
+        opacity: 0.45;
+        transform: translateY(0);
+        background: black;
+
+        @apply --custom-scrollbar-bar;
+      }
+
+      .scrollbar-child {
+        width: calc(100% - 20px);
+        margin-right: 20px;
+      }
+
+      .scrollbar-static {
+        width: calc(100% - 20px);
+      }
+    </style>
+
+    <div class="scrollbar">
+      <div class="scrollbar-hidden">
+        <div class="scrollbar-child">
+          <div class="scrollbar-static">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+      <div class="scrollbar-track">
+        <div class="scrollbar-bar"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="custom-scrollbar.js"></script>
+</dom-module>
