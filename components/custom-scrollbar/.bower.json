@@ -15,11 +15,11 @@
     "polymer": "^2.0.0"
   },
   "homepage": "https://github.com/DoubleTrade/custom-scrollbar",
-  "_release": "709a8a55ad",
+  "_release": "d90baf3cdc",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "709a8a55ade42593270eabb22b21d308c8717b9c"
+    "commit": "d90baf3cdc9aaaf856244ad1c75a1651175a7a4c"
   },
   "_source": "https://github.com/DoubleTrade/custom-scrollbar.git",
   "_target": "master",
