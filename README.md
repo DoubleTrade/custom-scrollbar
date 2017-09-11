@@ -13,6 +13,11 @@
 [See docs](https://doubletrade.github.io/custom-scrollbar/)
 
 
+### Browser support
+
+Chrome, Firefox, IE 11+/, Edge, Safari.
+
+
 ### Styling
 
 `<custom-scrollbar>` provides the following custom properties and mixins for styling:
