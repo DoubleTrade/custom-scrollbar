@@ -24,6 +24,7 @@ Custom property | Description | Default
 
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../iron-scroll-target-behavior/iron-scroll-target-behavior.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <dom-module id="custom-scrollbar">
   <template>
@@ -73,12 +74,13 @@ Custom property | Description | Default
         opacity: 0.45;
         transform: translateY(0);
         background: black;
+        transition: height 0.2s;
 
         @apply --custom-scrollbar-bar;
       }
 
       .scrollbar-child {
-        width: calc(100% - 20px);
+        width: calc(100% - 10px);
         margin-right: 20px;
       }
 
