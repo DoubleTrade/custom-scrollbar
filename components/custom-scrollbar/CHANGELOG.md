@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.0.5](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.5) (2017-09-11)
+- Add resizable behavior to listen resize event ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/7b8e59f))
+
 ## [v0.0.4](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.4) (2017-09-11)
 - Update readme ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/831821d))
 - Fix for ios devices ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/29a2415))
