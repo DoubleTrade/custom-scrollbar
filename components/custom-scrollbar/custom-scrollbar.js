@@ -41,6 +41,9 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
   ready() {
     super.ready();
 
+    Polymer.RenderStatus.afterNextRender(this, () => {
+      this.shadowRoot.querySelector('.scrollbar-static').style.width = `${this.offsetWidth - 10}px`;
+    });
     this.addEventListener('iron-resize', this._activeScrollbar);
   }
 
@@ -60,10 +63,10 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
         this._scrollbarHeight = scrollbarHeight > 20 ? scrollbarHeight : 20;
         this._scrollbarBar.style.height = `${this._scrollbarHeight}px`;
         this._draggable();
-        this.shadowRoot.querySelector('.scrollbar-child').style.width = 'calc(100% - 10px)';
+        this.shadowRoot.querySelector('.scrollbar-static').style.width = `${this.offsetWidth - 10}px`;
       } else {
         this._scrollbarBar.style.height = '0px';
-        this.shadowRoot.querySelector('.scrollbar-child').style.width = '100%';
+        this.shadowRoot.querySelector('.scrollbar-static').style.width = `${this.offsetWidth}px`;
       }
     });
   }
