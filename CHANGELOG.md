@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.0.7](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.7) (2017-09-15)
+- Add fork of iron-resizable-behavior to dependencies ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/439d80a))
+
 ## [v0.0.6](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.6) (2017-09-14)
 - Better render on windows chrome ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/5cfa3d9))
 
