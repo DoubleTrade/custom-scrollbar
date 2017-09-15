@@ -4,7 +4,8 @@
   "version": "0.0.6",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#^2.0.0"
+    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#^2.0.0",
+    "iron-resizable-behavior": "RoXuS/iron-resizable-behavior#2.0.1"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
