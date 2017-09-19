@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.0.8](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.8) (2017-09-19)
+- Add new property to display the bar on the mouse event ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/974ae3d))
+
 ## [v0.0.7](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.7) (2017-09-15)
 - Add fork of iron-resizable-behavior to dependencies ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/439d80a))
 
