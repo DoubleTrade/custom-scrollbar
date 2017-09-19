@@ -26,6 +26,14 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
       },
       _dragging: Object,
       _scrollbarBar: Element,
+      displayOnlyOnMouseOver: {
+        type: Boolean,
+        value: false,
+      },
+      _mouseover: {
+        type: Boolean,
+        value: false,
+      },
     };
   }
 
@@ -40,11 +48,9 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
 
   ready() {
     super.ready();
-
-    Polymer.RenderStatus.afterNextRender(this, () => {
-      this.shadowRoot.querySelector('.scrollbar-static').style.width = `${this.offsetWidth - 10}px`;
-    });
     this.addEventListener('iron-resize', this._activeScrollbar);
+    this.addEventListener('mouseover', this._handleMouseOver.bind(this));
+    this.addEventListener('mouseout', this._handleMouseOut.bind(this));
   }
 
   _activeScrollbar() {
@@ -58,12 +64,16 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
         this._offDraggableEvent();
       }
       this._scrollbarBar = this.shadowRoot.querySelector('.scrollbar-bar');
-      if (visibleAreaPercent < 100) {
+      if (
+        visibleAreaPercent < 100 &&
+        (!this.displayOnlyOnMouseOver || (this.displayOnlyOnMouseOver && this._mouseover))
+      ) {
         const scrollbarHeight = this._heightContent * visibleAreaPercent / 100;
         this._scrollbarHeight = scrollbarHeight > 20 ? scrollbarHeight : 20;
         this._scrollbarBar.style.height = `${this._scrollbarHeight}px`;
         this._draggable();
-        this.shadowRoot.querySelector('.scrollbar-static').style.width = `${this.offsetWidth - 10}px`;
+        this.shadowRoot.querySelector('.scrollbar-static').style.width = `${this.offsetWidth -
+          10}px`;
       } else {
         this._scrollbarBar.style.height = '0px';
         this.shadowRoot.querySelector('.scrollbar-static').style.width = `${this.offsetWidth}px`;
@@ -117,6 +127,22 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
     }
     this._scrollbarBar.style.transform = `translateY(${Math.max(0, this._scrollbarTop)}px)`;
     this.scrollTarget.scrollTop = scrollTop;
+  }
+
+  _handleMouseOver(event) {
+    event.preventDefault();
+    if (!this._mouseover && !this._dragging) {
+      this._mouseover = true;
+      this._activeScrollbar();
+    }
+  }
+
+  _handleMouseOut(event) {
+    event.preventDefault();
+    if (this._mouseover && !this._dragging) {
+      this._mouseover = false;
+      this._activeScrollbar();
+    }
   }
 }
 
