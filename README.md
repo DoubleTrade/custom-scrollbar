@@ -1,5 +1,5 @@
 [![Build status](https://travis-ci.org/DoubleTrade/custom-scrollbar.svg?branch=master)](https://travis-ci.org/DoubleTrade/custom-scrollbar)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/doubletrade/range-datepicker)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/doubletrade/custom-scrollbar)
 
 ## &lt;custom-scrollbar&gt;
 
