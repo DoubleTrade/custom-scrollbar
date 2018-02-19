@@ -2,7 +2,7 @@
 	"name": "custom-scrollbar",
 	"main": "custom-scrollbar.html",
 	"author": "Julien Rousseau <RoXuS>",
-	"version": "0.0.1",
+	"version": "0.0.9",
 	"description": "custom-scrollbar provides a simple custome scrollbar.",
 	"private": false,
 	"devDependencies": {
