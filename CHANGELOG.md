@@ -1,5 +1,11 @@
 # Change Log
 
+## [v0.0.9](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.9) (2018-02-19)
+- Merge pull request #2 from dcbrwn/master ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/483c785))
+- Update documentation ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/e25b09e))
+- Add mixins for :hover customization ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/dcf084a))
+- Fix README.md ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/78dc656))
+
 ## [v0.0.8](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.8) (2017-09-19)
 - Add new property to display the bar on the mouse event ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/974ae3d))
 
