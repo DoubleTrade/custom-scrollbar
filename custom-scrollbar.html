@@ -19,7 +19,11 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--custom-scrollbar-height` | Height of the content | 200px
 `--custom-scrollbar-bar` | Customize the bar | `{}`
+`--custom-scrollbar-bar-track-hover` | Customize the bar when track is under cursor | `{}`
+`--custom-scrollbar-bar-container-hover` | Customize the bar when container is under cursor | `{}`
 `--custom-scrollbar-track` | Customize the track | `{}`
+`--custom-scrollbar-track-hover` | Customize the track under cursor | `{}`
+`--custom-scrollbar-track-container-hover` | Customize the track when container is under cursor | `{}`
 -->
 
 <link rel="import" href="../polymer/polymer-element.html">
@@ -75,8 +79,23 @@ Custom property | Description | Default
         transform: translateY(0);
         background: black;
         transition: height 0.2s;
-
         @apply --custom-scrollbar-bar;
+      }
+
+      .scrollbar-track:hover {
+        @apply --custom-scrollbar-track-hover;
+      }
+
+      .scrollbar-track:hover .scrollbar-bar {
+        @apply --custom-scrollbar-bar-track-hover;
+      }
+
+      .scrollbar:hover .scrollbar-track {
+        @apply --custom-scrollbar-track-container-hover;
+      }
+
+      .scrollbar:hover .scrollbar-bar {
+        @apply --custom-scrollbar-bar-container-hover;
       }
     </style>
 
