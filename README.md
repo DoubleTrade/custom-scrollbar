@@ -26,7 +26,11 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--custom-scrollbar-height` | Height of the content | 200px
 `--custom-scrollbar-bar` | Customize the bar | `{}`
+`--custom-scrollbar-bar-track-hover` | Customize the bar when track is under cursor | `{}`
+`--custom-scrollbar-bar-container-hover` | Customize the bar when container is under cursor | `{}`
 `--custom-scrollbar-track` | Customize the track | `{}`
+`--custom-scrollbar-track-hover` | Customize the track under cursor | `{}`
+`--custom-scrollbar-track-container-hover` | Customize the track when container is under cursor | `{}`
 
 <!---
 ```
