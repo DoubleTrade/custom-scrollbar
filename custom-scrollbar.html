@@ -33,7 +33,7 @@ Custom property | Description | Default
 <dom-module id="custom-scrollbar">
   <template>
     <style>
-       :host {
+      :host {
         display: block;
         overflow: hidden;
         overflow-y: auto;
@@ -80,6 +80,10 @@ Custom property | Description | Default
         background-color: black;
         transition: height 0.2s;
         @apply --custom-scrollbar-bar;
+      }
+
+      .scrollbar-static {
+        transition: width 0.2s;
       }
 
       .scrollbar-track:hover {
