@@ -1,42 +1,10 @@
-/*
+import { PolymerElement } from '@polymer/polymer/polymer-element';
 
-[![Build status](https://travis-ci.org/DoubleTrade/custom-scrollbar.svg?branch=master)](https://travis-ci.org/DoubleTrade/custom-scrollbar)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/doubletrade/range-datepicker)
-
-## &lt;custom-scrollbar&gt;
-
-`custom-scrollbar` provides a simple custom scrollbar for a container.
-
-### Install
-
-    npm install custom-scrollbar
-
-### Styling
-
-`<custom-scrollbar>` provides the following custom properties and mixins for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--custom-scrollbar-height` | Height of the content | 200px
-`--custom-scrollbar-bar` | Customize the bar | `{}`
-`--custom-scrollbar-bar-track-hover` | Customize the bar when track is under cursor | `{}`
-`--custom-scrollbar-bar-container-hover` | Customize the bar when container is under cursor | `{}`
-`--custom-scrollbar-track` | Customize the track | `{}`
-`--custom-scrollbar-track-hover` | Customize the track under cursor | `{}`
-`--custom-scrollbar-track-container-hover` | Customize the track when container is under cursor | `{}`
-*/
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import { Element as Element$0 } from '@polymer/polymer/polymer-element.js';
-
-import { IronScrollTargetBehavior } from '@polymer/iron-scroll-target-behavior/iron-scroll-target-behavior.js';
-import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
-import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
+import { IronScrollTargetBehavior } from '@polymer/iron-scroll-target-behavior/iron-scroll-target-behavior';
+import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior';
+import { html } from '@polymer/polymer/lib/utils/html-tag';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status';
+import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
 /* eslint no-mixed-operators: "off", no-param-reassign: "off", radix: "off" */
 /**
  * `custom-scrollbar`
@@ -49,7 +17,7 @@ import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 
 class CustomScrollbar extends mixinBehaviors(
   [IronScrollTargetBehavior, IronResizableBehavior],
-  Element$0
+  PolymerElement
 ) {
   static get template() {
     return html`
