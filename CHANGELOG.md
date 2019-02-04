@@ -1,5 +1,9 @@
 # Change Log
 
+## [v0.0.11](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.11) (2019-02-04)
+
+- Fix bug on safari ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/a5819e3))
+
 ## [v0.0.10](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.10) (2018-04-16)
 
 * Add transition on scrollbar-static element ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/3e6614d))
