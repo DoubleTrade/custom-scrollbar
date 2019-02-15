@@ -1,5 +1,9 @@
 # Change Log
 
+## [v0.0.12](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.12) (2019-02-15)
+
+- Add way to add style on scrollbar hidden div ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/e0471f7))
+
 ## [v0.0.11](https://github.com/DoubleTrade/custom-scrollbar/tree/0.0.11) (2019-02-04)
 
 - Fix bug on safari ([commit](https://github.com/DoubleTrade/custom-scrollbar/commit/a5819e3))
