@@ -1,6 +1,6 @@
 {
   "description": "custom-scrollbar provides a simple custome scrollbar.",
-  "name": "custom-scrollbar",
+  "name": "@doubletrade/custom-scrollbar",
   "main": "custom-scrollbar.js",
   "author": "Julien Rousseau <RoXuS>",
   "version": "0.0.12",
