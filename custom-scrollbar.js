@@ -1,3 +1,42 @@
+/*
+
+[![Build status](https://travis-ci.org/DoubleTrade/custom-scrollbar.svg?branch=master)](https://travis-ci.org/DoubleTrade/custom-scrollbar)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/doubletrade/range-datepicker)
+
+## &lt;custom-scrollbar&gt;
+
+`custom-scrollbar` provides a simple custom scrollbar for a container.
+
+### Install
+
+    bower install custom-scrollbar
+
+### Styling
+
+`<custom-scrollbar>` provides the following custom properties and mixins for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--custom-scrollbar-height` | Height of the content | 200px
+`--custom-scrollbar-bar` | Customize the bar | `{}`
+`--custom-scrollbar-bar-track-hover` | Customize the bar when track is under cursor | `{}`
+`--custom-scrollbar-bar-container-hover` | Customize the bar when container is under cursor | `{}`
+`--custom-scrollbar-track` | Customize the track | `{}`
+`--custom-scrollbar-track-hover` | Customize the track under cursor | `{}`
+`--custom-scrollbar-track-container-hover` | Customize the track when container is under cursor | `{}`
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+
+import { IronScrollTargetBehavior } from '@polymer/iron-scroll-target-behavior/iron-scroll-target-behavior.js';
+import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 /* eslint no-mixed-operators: "off", no-param-reassign: "off", radix: "off" */
 /**
  * `custom-scrollbar`
@@ -8,10 +47,99 @@
  * @demo demo/index.html
 */
 
-class CustomScrollbar extends Polymer.mixinBehaviors(
-  [Polymer.IronScrollTargetBehavior, Polymer.IronResizableBehavior],
-  Polymer.Element
+class CustomScrollbar extends mixinBehaviors(
+  [IronScrollTargetBehavior, IronResizableBehavior],
+  PolymerElement
 ) {
+  static get template() {
+    return html`
+    <style>
+      :host {
+        display: block;
+        overflow: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .scrollbar {
+        position: relative;
+        height: var(--custom-scrollbar-height, 200px);
+      }
+
+      .scrollbar-hidden {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        outline: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: -20px;
+        bottom: 0;
+        @apply --custom-scrollbar-hidden;
+      }
+
+      .scrollbar-track {
+        position: absolute;
+        right: 2px;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        overflow: hidden;
+        @apply --custom-scrollbar-track;
+      }
+
+      .scrollbar-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 4px;
+        cursor: default;
+        outline: none;
+        z-index: 1;
+        opacity: 0.45;
+        transform: translateY(0);
+        background-color: black;
+        transition: height 0.2s;
+        @apply --custom-scrollbar-bar;
+      }
+
+      .scrollbar-static {
+        transition: width 0.2s;
+      }
+
+      .scrollbar-track:hover {
+        @apply --custom-scrollbar-track-hover;
+      }
+
+      .scrollbar-track:hover .scrollbar-bar {
+        @apply --custom-scrollbar-bar-track-hover;
+      }
+
+      .scrollbar:hover .scrollbar-track {
+        @apply --custom-scrollbar-track-container-hover;
+      }
+
+      .scrollbar:hover .scrollbar-bar {
+        @apply --custom-scrollbar-bar-container-hover;
+      }
+    </style>
+
+    <div class="scrollbar">
+      <div class="scrollbar-hidden">
+        <div class="scrollbar-child">
+          <div class="scrollbar-static">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+      <div class="scrollbar-track">
+        <div class="scrollbar-bar"></div>
+      </div>
+    </div>
+`;
+  }
+
   static get is() {
     return 'custom-scrollbar';
   }
@@ -54,7 +182,7 @@ class CustomScrollbar extends Polymer.mixinBehaviors(
   }
 
   _activeScrollbar() {
-    Polymer.RenderStatus.afterNextRender(this, () => {
+    afterNextRender(this, () => {
       this.scrollTarget = this.shadowRoot.querySelector('.scrollbar-hidden');
 
       this._heightContent = this.shadowRoot.querySelector('.scrollbar').offsetHeight;
